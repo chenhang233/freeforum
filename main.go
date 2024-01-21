@@ -1,7 +1,12 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"freeforum/config"
+)
 
 func main() {
+	config.SetupConfig("freeforum.conf")
+
 	fmt.Println("hello freeforum")
 }
