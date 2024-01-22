@@ -1,9 +1,10 @@
 package service
 
-import "freeforum/interface/controller"
+import (
+	"freeforum/interface/controller"
+	"net/http"
+)
 
-type Service interface {
-	Exec(client Connection) controller.Reply
-	AfterClientClose(c Connection)
-	Close()
+type UserServiceType interface {
+	BaseUserInfo(r *http.Request) controller.Reply
 }
