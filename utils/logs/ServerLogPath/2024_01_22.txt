@@ -1,0 +1,120 @@
+[info]2024/01/22 13:19:20 C:/Users/chenhang/Desktop/code/05.go/freeforum/controller/httpd/server.go:19: start http server
+[info]2024/01/22 13:19:20 C:/Users/chenhang/Desktop/code/05.go/freeforum/controller/httpd/server.go:20: address:  0.0.0.0:8888
+[info]2024/01/22 13:19:27 C:/Users/chenhang/Desktop/code/05.go/freeforum/controller/httpd/server.go:38: Hello, World!
+[info]2024/01/22 13:19:27 C:/Users/chenhang/Desktop/code/05.go/freeforum/controller/httpd/server.go:38: Hello, World!
+[info]2024/01/22 13:19:33 C:/Users/chenhang/Desktop/code/05.go/freeforum/controller/httpd/server.go:38: Hello, World!
+[info]2024/01/22 13:19:33 C:/Users/chenhang/Desktop/code/05.go/freeforum/controller/httpd/server.go:38: Hello, World!
+[info]2024/01/22 13:22:49 C:/Users/chenhang/Desktop/code/05.go/freeforum/controller/httpd/server.go:38: Hello, World!
+[info]2024/01/22 13:22:49 C:/Users/chenhang/Desktop/code/05.go/freeforum/controller/httpd/server.go:38: Hello, World!
+[info]2024/01/22 13:22:55 C:/Users/chenhang/Desktop/code/05.go/freeforum/controller/httpd/server.go:38: Hello, World!
+[info]2024/01/22 13:22:55 C:/Users/chenhang/Desktop/code/05.go/freeforum/controller/httpd/server.go:38: Hello, World!
+[info]2024/01/22 13:53:37 C:/Users/chenhang/Desktop/code/05.go/freeforum/controller/httpd/server.go:19: start http server
+[info]2024/01/22 13:53:37 C:/Users/chenhang/Desktop/code/05.go/freeforum/controller/httpd/server.go:20: address:  0.0.0.0:8888
+[info]2024/01/22 13:53:45 C:/Users/chenhang/Desktop/code/05.go/freeforum/controller/httpd/server.go:45: Hello, World!
+[info]2024/01/22 13:53:45 C:/Users/chenhang/Desktop/code/05.go/freeforum/controller/httpd/server.go:45: Hello, World!
+[info]2024/01/22 13:53:58 C:/Users/chenhang/Desktop/code/05.go/freeforum/controller/httpd/server.go:45: Hello, World!
+[info]2024/01/22 13:54:04 C:/Users/chenhang/Desktop/code/05.go/freeforum/controller/httpd/server.go:45: Hello, World!
+[info]2024/01/22 13:54:04 C:/Users/chenhang/Desktop/code/05.go/freeforum/controller/httpd/server.go:45: Hello, World!
+[info]2024/01/22 13:54:34 C:/Users/chenhang/Desktop/code/05.go/freeforum/controller/httpd/server.go:19: start http server
+[info]2024/01/22 13:54:34 C:/Users/chenhang/Desktop/code/05.go/freeforum/controller/httpd/server.go:20: address:  0.0.0.0:8888
+[info]2024/01/22 13:54:38 C:/Users/chenhang/Desktop/code/05.go/freeforum/controller/httpd/server.go:45: Hello, World!
+[info]2024/01/22 13:54:38 C:/Users/chenhang/Desktop/code/05.go/freeforum/controller/httpd/server.go:45: Hello, World!
+[info]2024/01/22 13:54:42 C:/Users/chenhang/Desktop/code/05.go/freeforum/controller/httpd/server.go:45: Hello, World!
+[info]2024/01/22 13:54:42 C:/Users/chenhang/Desktop/code/05.go/freeforum/controller/httpd/server.go:45: Hello, World!
+[info]2024/01/22 13:55:32 C:/Users/chenhang/Desktop/code/05.go/freeforum/controller/httpd/server.go:19: start http server
+[info]2024/01/22 13:55:32 C:/Users/chenhang/Desktop/code/05.go/freeforum/controller/httpd/server.go:20: address:  0.0.0.0:8888
+[info]2024/01/22 13:55:38 C:/Users/chenhang/Desktop/code/05.go/freeforum/controller/httpd/server.go:45: Hello, World!
+[info]2024/01/22 13:55:38 C:/Users/chenhang/Desktop/code/05.go/freeforum/controller/httpd/server.go:45: Hello, World!
+[info]2024/01/22 13:56:13 C:/Users/chenhang/Desktop/code/05.go/freeforum/controller/httpd/server.go:20: start http server
+[info]2024/01/22 13:56:13 C:/Users/chenhang/Desktop/code/05.go/freeforum/controller/httpd/server.go:21: address:  0.0.0.0:8888
+[info]2024/01/22 13:56:15 C:/Users/chenhang/Desktop/code/05.go/freeforum/controller/httpd/server.go:47: Hello, World!
+[info]2024/01/22 13:56:15 C:/Users/chenhang/Desktop/code/05.go/freeforum/controller/httpd/server.go:47: Hello, World!
+[info]2024/01/22 13:57:19 C:/Users/chenhang/Desktop/code/05.go/freeforum/controller/httpd/server.go:19: start http server
+[info]2024/01/22 13:57:19 C:/Users/chenhang/Desktop/code/05.go/freeforum/controller/httpd/server.go:20: address:  0.0.0.0:8888
+[info]2024/01/22 13:57:21 C:/Users/chenhang/Desktop/code/05.go/freeforum/controller/httpd/server.go:45: Hello, World!
+[info]2024/01/22 13:57:21 C:/Users/chenhang/Desktop/code/05.go/freeforum/controller/httpd/server.go:45: Hello, World!
+[info]2024/01/22 13:57:42 C:/Users/chenhang/Desktop/code/05.go/freeforum/controller/httpd/server.go:19: start http server
+[info]2024/01/22 13:57:42 C:/Users/chenhang/Desktop/code/05.go/freeforum/controller/httpd/server.go:20: address:  0.0.0.0:8888
+[info]2024/01/22 13:57:45 C:/Users/chenhang/Desktop/code/05.go/freeforum/controller/httpd/server.go:45: Hello, World!
+[info]2024/01/22 13:57:45 C:/Users/chenhang/Desktop/code/05.go/freeforum/controller/httpd/server.go:45: Hello, World!
+[info]2024/01/22 13:58:19 C:/Users/chenhang/Desktop/code/05.go/freeforum/controller/httpd/server.go:20: start http server
+[info]2024/01/22 13:58:19 C:/Users/chenhang/Desktop/code/05.go/freeforum/controller/httpd/server.go:21: address:  0.0.0.0:8888
+[info]2024/01/22 13:58:21 C:/Users/chenhang/Desktop/code/05.go/freeforum/controller/httpd/server.go:46: Hello, World!
+[info]2024/01/22 13:58:22 C:/Users/chenhang/Desktop/code/05.go/freeforum/controller/httpd/server.go:46: Hello, World!
+[info]2024/01/22 13:58:53 C:/Users/chenhang/Desktop/code/05.go/freeforum/controller/httpd/server.go:20: start http server
+[info]2024/01/22 13:58:53 C:/Users/chenhang/Desktop/code/05.go/freeforum/controller/httpd/server.go:21: address:  0.0.0.0:8888
+[info]2024/01/22 13:58:56 C:/Users/chenhang/Desktop/code/05.go/freeforum/controller/httpd/server.go:46: Hello, World!
+[info]2024/01/22 13:58:57 C:/Users/chenhang/Desktop/code/05.go/freeforum/controller/httpd/server.go:46: Hello, World!
+[info]2024/01/22 14:02:36 C:/Users/chenhang/Desktop/code/05.go/freeforum/controller/httpd/server.go:20: start http server
+[info]2024/01/22 14:02:36 C:/Users/chenhang/Desktop/code/05.go/freeforum/controller/httpd/server.go:21: address:  0.0.0.0:8888
+[info]2024/01/22 14:02:41 C:/Users/chenhang/Desktop/code/05.go/freeforum/controller/httpd/server.go:46: Hello, World!
+[info]2024/01/22 14:02:41 C:/Users/chenhang/Desktop/code/05.go/freeforum/controller/httpd/server.go:46: Hello, World!
+[info]2024/01/22 14:04:10 C:/Users/chenhang/Desktop/code/05.go/freeforum/controller/httpd/server.go:20: start http server
+[info]2024/01/22 14:04:10 C:/Users/chenhang/Desktop/code/05.go/freeforum/controller/httpd/server.go:21: address:  0.0.0.0:8888
+[info]2024/01/22 14:04:12 C:/Users/chenhang/Desktop/code/05.go/freeforum/controller/httpd/server.go:46: Hello, World!
+[info]2024/01/22 14:04:12 C:/Users/chenhang/Desktop/code/05.go/freeforum/controller/httpd/server.go:46: Hello, World!
+[info]2024/01/22 14:05:41 C:/Users/chenhang/Desktop/code/05.go/freeforum/controller/httpd/server.go:20: start http server
+[info]2024/01/22 14:05:41 C:/Users/chenhang/Desktop/code/05.go/freeforum/controller/httpd/server.go:21: address:  0.0.0.0:8888
+[info]2024/01/22 14:05:46 C:/Users/chenhang/Desktop/code/05.go/freeforum/controller/httpd/server.go:46: Hello, World!
+[info]2024/01/22 14:05:46 C:/Users/chenhang/Desktop/code/05.go/freeforum/controller/httpd/server.go:46: Hello, World!
+[info]2024/01/22 14:06:01 C:/Users/chenhang/Desktop/code/05.go/freeforum/controller/httpd/server.go:20: start http server
+[info]2024/01/22 14:06:01 C:/Users/chenhang/Desktop/code/05.go/freeforum/controller/httpd/server.go:21: address:  0.0.0.0:8888
+[info]2024/01/22 14:06:03 C:/Users/chenhang/Desktop/code/05.go/freeforum/controller/httpd/server.go:46: Hello, World!
+[info]2024/01/22 14:06:03 C:/Users/chenhang/Desktop/code/05.go/freeforum/controller/httpd/server.go:46: Hello, World!
+[info]2024/01/22 14:06:44 C:/Users/chenhang/Desktop/code/05.go/freeforum/controller/httpd/server.go:20: start http server
+[info]2024/01/22 14:06:44 C:/Users/chenhang/Desktop/code/05.go/freeforum/controller/httpd/server.go:21: address:  0.0.0.0:8888
+[info]2024/01/22 14:06:46 C:/Users/chenhang/Desktop/code/05.go/freeforum/controller/httpd/server.go:46: Hello, World!
+[info]2024/01/22 14:06:46 C:/Users/chenhang/Desktop/code/05.go/freeforum/controller/httpd/server.go:46: Hello, World!
+[info]2024/01/22 14:07:03 C:/Users/chenhang/Desktop/code/05.go/freeforum/controller/httpd/server.go:20: start http server
+[info]2024/01/22 14:07:03 C:/Users/chenhang/Desktop/code/05.go/freeforum/controller/httpd/server.go:21: address:  0.0.0.0:8888
+[info]2024/01/22 14:07:05 C:/Users/chenhang/Desktop/code/05.go/freeforum/controller/httpd/server.go:46: Hello, World!
+[info]2024/01/22 14:07:05 C:/Users/chenhang/Desktop/code/05.go/freeforum/controller/httpd/server.go:46: Hello, World!
+[info]2024/01/22 14:07:26 C:/Users/chenhang/Desktop/code/05.go/freeforum/controller/httpd/server.go:20: start http server
+[info]2024/01/22 14:07:26 C:/Users/chenhang/Desktop/code/05.go/freeforum/controller/httpd/server.go:21: address:  0.0.0.0:8888
+[info]2024/01/22 14:07:37 C:/Users/chenhang/Desktop/code/05.go/freeforum/controller/httpd/server.go:20: start http server
+[info]2024/01/22 14:07:37 C:/Users/chenhang/Desktop/code/05.go/freeforum/controller/httpd/server.go:21: address:  0.0.0.0:8888
+[info]2024/01/22 14:07:52 C:/Users/chenhang/Desktop/code/05.go/freeforum/controller/httpd/server.go:20: start http server
+[info]2024/01/22 14:07:52 C:/Users/chenhang/Desktop/code/05.go/freeforum/controller/httpd/server.go:21: address:  0.0.0.0:8888
+[info]2024/01/22 14:08:09 C:/Users/chenhang/Desktop/code/05.go/freeforum/controller/httpd/server.go:46: Hello, World!
+[info]2024/01/22 14:08:09 C:/Users/chenhang/Desktop/code/05.go/freeforum/controller/httpd/server.go:46: Hello, World!
+[info]2024/01/22 14:08:26 C:/Users/chenhang/Desktop/code/05.go/freeforum/controller/httpd/server.go:46: Hello, World!
+[info]2024/01/22 14:08:27 C:/Users/chenhang/Desktop/code/05.go/freeforum/controller/httpd/server.go:46: Hello, World!
+[info]2024/01/22 14:08:30 C:/Users/chenhang/Desktop/code/05.go/freeforum/controller/httpd/server.go:46: Hello, World!
+[info]2024/01/22 14:08:31 C:/Users/chenhang/Desktop/code/05.go/freeforum/controller/httpd/server.go:46: Hello, World!
+[info]2024/01/22 14:08:57 C:/Users/chenhang/Desktop/code/05.go/freeforum/controller/httpd/server.go:46: Hello, World!
+[info]2024/01/22 14:08:57 C:/Users/chenhang/Desktop/code/05.go/freeforum/controller/httpd/server.go:46: Hello, World!
+[info]2024/01/22 14:09:07 C:/Users/chenhang/Desktop/code/05.go/freeforum/controller/httpd/server.go:20: start http server
+[info]2024/01/22 14:09:07 C:/Users/chenhang/Desktop/code/05.go/freeforum/controller/httpd/server.go:21: address:  0.0.0.0:8888
+[info]2024/01/22 14:09:09 C:/Users/chenhang/Desktop/code/05.go/freeforum/controller/httpd/server.go:46: Hello, World!
+[info]2024/01/22 14:09:09 C:/Users/chenhang/Desktop/code/05.go/freeforum/controller/httpd/server.go:46: Hello, World!
+[info]2024/01/22 14:10:13 C:/Users/chenhang/Desktop/code/05.go/freeforum/controller/httpd/server.go:20: start http server
+[info]2024/01/22 14:10:13 C:/Users/chenhang/Desktop/code/05.go/freeforum/controller/httpd/server.go:21: address:  0.0.0.0:8888
+[info]2024/01/22 14:10:15 C:/Users/chenhang/Desktop/code/05.go/freeforum/controller/httpd/server.go:46: Hello, World!
+[info]2024/01/22 14:10:15 C:/Users/chenhang/Desktop/code/05.go/freeforum/controller/httpd/server.go:46: Hello, World!
+[info]2024/01/22 14:10:29 C:/Users/chenhang/Desktop/code/05.go/freeforum/controller/httpd/server.go:20: start http server
+[info]2024/01/22 14:10:29 C:/Users/chenhang/Desktop/code/05.go/freeforum/controller/httpd/server.go:21: address:  0.0.0.0:8888
+[info]2024/01/22 14:10:31 C:/Users/chenhang/Desktop/code/05.go/freeforum/controller/httpd/server.go:46: Hello, World!
+[info]2024/01/22 14:10:31 C:/Users/chenhang/Desktop/code/05.go/freeforum/controller/httpd/server.go:46: Hello, World!
+[info]2024/01/22 14:10:48 C:/Users/chenhang/Desktop/code/05.go/freeforum/controller/httpd/server.go:20: start http server
+[info]2024/01/22 14:10:48 C:/Users/chenhang/Desktop/code/05.go/freeforum/controller/httpd/server.go:21: address:  0.0.0.0:8888
+[info]2024/01/22 14:10:53 C:/Users/chenhang/Desktop/code/05.go/freeforum/controller/httpd/server.go:46: Hello, World!
+[info]2024/01/22 14:10:53 C:/Users/chenhang/Desktop/code/05.go/freeforum/controller/httpd/server.go:46: Hello, World!
+[info]2024/01/22 14:11:07 C:/Users/chenhang/Desktop/code/05.go/freeforum/controller/httpd/server.go:20: start http server
+[info]2024/01/22 14:11:07 C:/Users/chenhang/Desktop/code/05.go/freeforum/controller/httpd/server.go:21: address:  0.0.0.0:8888
+[info]2024/01/22 14:11:08 C:/Users/chenhang/Desktop/code/05.go/freeforum/controller/httpd/server.go:46: Hello, World!
+[info]2024/01/22 14:11:08 C:/Users/chenhang/Desktop/code/05.go/freeforum/controller/httpd/server.go:46: Hello, World!
+[info]2024/01/22 14:11:19 C:/Users/chenhang/Desktop/code/05.go/freeforum/controller/httpd/server.go:20: start http server
+[info]2024/01/22 14:11:19 C:/Users/chenhang/Desktop/code/05.go/freeforum/controller/httpd/server.go:21: address:  0.0.0.0:8888
+[info]2024/01/22 14:11:28 C:/Users/chenhang/Desktop/code/05.go/freeforum/controller/httpd/server.go:46: Hello, World!
+[info]2024/01/22 14:11:28 C:/Users/chenhang/Desktop/code/05.go/freeforum/controller/httpd/server.go:46: Hello, World!
+[info]2024/01/22 14:11:43 C:/Users/chenhang/Desktop/code/05.go/freeforum/controller/httpd/server.go:20: start http server
+[info]2024/01/22 14:11:43 C:/Users/chenhang/Desktop/code/05.go/freeforum/controller/httpd/server.go:21: address:  0.0.0.0:8888
+[info]2024/01/22 14:11:46 C:/Users/chenhang/Desktop/code/05.go/freeforum/controller/httpd/server.go:46: Hello, World!
+[info]2024/01/22 14:11:46 C:/Users/chenhang/Desktop/code/05.go/freeforum/controller/httpd/server.go:46: Hello, World!
+[info]2024/01/22 14:20:53 C:/Users/chenhang/Desktop/code/05.go/freeforum/controller/httpd/server.go:19: start http server
+[info]2024/01/22 14:20:53 C:/Users/chenhang/Desktop/code/05.go/freeforum/controller/httpd/server.go:20: address:  0.0.0.0:8888
+[info]2024/01/22 14:20:57 C:/Users/chenhang/Desktop/code/05.go/freeforum/controller/httpd/server.go:43: Hello, World!
+[info]2024/01/22 14:20:58 C:/Users/chenhang/Desktop/code/05.go/freeforum/controller/httpd/server.go:43: Hello, World!
+[info]2024/01/22 14:21:51 C:/Users/chenhang/Desktop/code/05.go/freeforum/controller/httpd/server.go:19: start http server
+[info]2024/01/22 14:21:51 C:/Users/chenhang/Desktop/code/05.go/freeforum/controller/httpd/server.go:20: address:  0.0.0.0:8888
+[info]2024/01/22 14:21:54 C:/Users/chenhang/Desktop/code/05.go/freeforum/controller/httpd/server.go:43: Hello, World!

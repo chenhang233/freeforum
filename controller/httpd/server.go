@@ -4,12 +4,13 @@ import (
 	"context"
 	"fmt"
 	"freeforum/config"
+	"freeforum/controller/interceptor"
 	"freeforum/utils/logs"
 	"net/http"
 )
 
 type HandlerD struct {
-	closing bool
+	close bool
 }
 
 func (h *HandlerD) Start() error {
@@ -26,16 +27,25 @@ func (h *HandlerD) Start() error {
 }
 
 func (h *HandlerD) handle(w http.ResponseWriter, r *http.Request) {
-	// prev ...
-	h.Handle(context.Background(), w, r)
+	// prev
+	ctx := context.Background()
+	hp := &interceptor.HttpInterceptor{}
+	if !hp.RequestPrevious(ctx, w, r) {
+
+	}
+	h.Handle(ctx, w, r)
+	// after
+	hp.RequestAfters(ctx, w, r)
 }
 
 func (h *HandlerD) Handle(ctx context.Context, w http.ResponseWriter, r *http.Request) {
 	// 发送响应数据
+	//fmt.Println(r.RequestURI, )
 	fmt.Fprintf(w, "Hello, World!")
 	logs.LOG.Info.Println("Hello, World!")
 }
 
 func (h *HandlerD) Close() error {
+	h.close = true
 	return nil
 }
