@@ -14,7 +14,6 @@ type HandlerD struct {
 }
 
 func (h *HandlerD) Start() error {
-	http.HandleFunc(Q_API, h.handle2)
 	http.HandleFunc(Q_BASE, h.handle)
 	logs.LOG.Info.Println("start http server")
 	logs.LOG.Info.Println("address: ", config.Properties.BindAddr)
@@ -30,17 +29,22 @@ func (h *HandlerD) handle(w http.ResponseWriter, r *http.Request) {
 	// prev
 	ctx := context.Background()
 	hp := &interceptor.HttpInterceptor{}
-	if !hp.RequestPrevious(ctx, w, r) {
+	if !hp.RequestPrevious(&ctx, w, r) {
+		return
+	}
+	rt := ctx.Value("ReqList").([]string)
+	if rt[0] == Q_API {
+		h.handle2(&ctx, w, r)
 		return
 	}
 	h.Handle(ctx, w, r)
 	// after
-	hp.RequestAfters(ctx, w, r)
+	hp.RequestAfters(&ctx, w, r)
 }
 
-func (h *HandlerD) handle2(w http.ResponseWriter, r *http.Request) {
-	ctx := context.Background()
-	url := r.RequestURI
+func (h *HandlerD) handle2(ctx *context.Context, w http.ResponseWriter, r *http.Request) {
+	url := r.RequestURI[1:]
+	logs.LOG.Info.Println(fmt.Sprintf("api url: %s", url))
 	if !CheckUrlExist(url) {
 		return
 	}
@@ -61,8 +65,8 @@ func (h *HandlerD) handle2(w http.ResponseWriter, r *http.Request) {
 }
 
 func (h *HandlerD) Handle(ctx context.Context, w http.ResponseWriter, r *http.Request) {
-	fmt.Fprintf(w, "Hello, World!")
-	logs.LOG.Info.Println("Hello, World!")
+	fmt.Fprintf(w, "Hello!")
+	logs.LOG.Info.Println("Hello!")
 }
 
 func (h *HandlerD) Close() error {

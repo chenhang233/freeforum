@@ -27,7 +27,7 @@ func (in *HttpInterceptor) loadStruct(r *http.Request) {
 	}
 }
 
-func (in *HttpInterceptor) RequestPrevious(ctx context.Context, w http.ResponseWriter, r *http.Request) bool {
+func (in *HttpInterceptor) RequestPrevious(ctx *context.Context, w http.ResponseWriter, r *http.Request) bool {
 	in.loadStruct(r)
 	rl := in.ReqList
 	if len(rl) == 0 {
@@ -49,9 +49,10 @@ func (in *HttpInterceptor) RequestPrevious(ctx context.Context, w http.ResponseW
 		fmt.Println(r.RequestURI)
 		return false
 	}
+	*ctx = context.WithValue(*ctx, "ReqList", rl)
 	return true
 }
 
-func (in *HttpInterceptor) RequestAfters(ctx context.Context, w http.ResponseWriter, r *http.Request) {
+func (in *HttpInterceptor) RequestAfters(ctx *context.Context, w http.ResponseWriter, r *http.Request) {
 
 }

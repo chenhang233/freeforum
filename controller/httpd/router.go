@@ -3,16 +3,17 @@ package httpd
 import (
 	"context"
 	"freeforum/interface/controller"
+	"freeforum/service/user"
 	"freeforum/utils/logs"
 	"net/http"
 )
 
 const (
 	Q_BASE = "/"
-	Q_API  = "/api"
+	Q_API  = "api"
 )
 
-type ServiceFn func(ctx context.Context, r *http.Request) controller.Reply
+type ServiceFn func(ctx *context.Context, r *http.Request) controller.Reply
 
 type params struct {
 	serviceFn ServiceFn
@@ -26,15 +27,20 @@ func CheckUrlExist(url string) bool {
 	return ok
 }
 
-func RegisterUrl(url string, fn ServiceFn, on bool) {
+func RegisterUrl(url string, fn ServiceFn, close bool) {
 	if CheckUrlExist(url) {
 		logs.LOG.Error.Println(url)
 		panic("url exist")
 	}
 	p := &params{
 		serviceFn: fn,
-		close:     on,
+		close:     close,
 	}
 	url = Q_API + url
 	RouterTable[url] = p
+}
+
+func init() {
+	//user.UsersServiceInstance = &user.UsersService{}
+	RegisterUrl("/users/baseInfo", user.UsersServiceInstance.BaseUserInfo, false)
 }
