@@ -33,3 +33,7 @@ func init() {
 func GetDB() *gorm.DB {
 	return _db
 }
+
+func GetTable(name string) *gorm.DB {
+	return GetDB().Table(name)
+}

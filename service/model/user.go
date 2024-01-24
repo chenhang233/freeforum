@@ -2,8 +2,13 @@ package model
 
 import "time"
 
+var (
+	TableUsers = "users"
+)
+
 type Users struct {
-	Cid          int       `json:"cid"`
+	Id           int       `json:"id"`
+	Cid          string    `json:"cid"`
 	Nickname     string    `json:"nickname"`
 	Gender       int8      `json:"gender"`
 	Place        string    `json:"place"`
