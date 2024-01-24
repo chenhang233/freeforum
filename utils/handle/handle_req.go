@@ -33,3 +33,11 @@ func Unmarshal(data []byte, param any) {
 		logs.LOG.Error.Println(err)
 	}
 }
+
+func Marshal(data any) []byte {
+	res, err := json.Marshal(data)
+	if err != nil {
+		logs.LOG.Error.Println(err)
+	}
+	return res
+}
