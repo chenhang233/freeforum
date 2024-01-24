@@ -1,0 +1,3 @@
+[info]2024/01/24 13:28:07 C:/Users/chenhang/Desktop/code/05.go/freeforum/controller/httpd/server.go:18: start http server
+[info]2024/01/24 13:28:07 C:/Users/chenhang/Desktop/code/05.go/freeforum/controller/httpd/server.go:19: address:  0.0.0.0:8888
+[info]2024/01/24 13:28:11 C:/Users/chenhang/Desktop/code/05.go/freeforum/controller/httpd/server.go:47: api url: api/users/baseInfo
