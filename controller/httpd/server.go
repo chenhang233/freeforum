@@ -5,6 +5,8 @@ import (
 	"fmt"
 	"freeforum/config"
 	"freeforum/controller/interceptor"
+	"freeforum/interface/service"
+	"freeforum/utils/handle"
 	"freeforum/utils/logs"
 	"net/http"
 )
@@ -57,8 +59,13 @@ func (h *HandlerD) handle2(ctx *context.Context, w http.ResponseWriter, r *http.
 		}
 		return
 	}
-	res := p.serviceFn(ctx, r)
-	_, err := w.Write(res.ToBytes())
+	pd, err := handle.ReadBody(r.Body)
+	req1 := &service.Request1{
+		Post:  pd,
+		Query: url,
+	}
+	res := p.serviceFn(ctx, req1)
+	_, err = w.Write(res.ToBytes())
 	if err != nil {
 		logs.LOG.Error.Println(err)
 	}

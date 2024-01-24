@@ -3,9 +3,9 @@ package httpd
 import (
 	"context"
 	"freeforum/interface/controller"
+	"freeforum/interface/service"
 	"freeforum/service/user"
 	"freeforum/utils/logs"
-	"net/http"
 )
 
 const (
@@ -13,7 +13,7 @@ const (
 	Q_API  = "api"
 )
 
-type ServiceFn func(ctx *context.Context, r *http.Request) controller.Reply
+type ServiceFn func(ctx *context.Context, req *service.Request1) controller.Reply
 
 type params struct {
 	serviceFn ServiceFn
@@ -40,7 +40,9 @@ func RegisterUrl(url string, fn ServiceFn, close bool) {
 	RouterTable[url] = p
 }
 
+var UsersServiceInstance service.UserServiceType
+
 func init() {
-	//user.UsersServiceInstance = &user.UsersService{}
-	RegisterUrl("/users/baseInfo", user.UsersServiceInstance.BaseUserInfo, false)
+	UsersServiceInstance = &user.UsersService{}
+	RegisterUrl("/users/baseInfo", UsersServiceInstance.BaseUserInfo, false)
 }

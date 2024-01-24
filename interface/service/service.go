@@ -3,9 +3,13 @@ package service
 import (
 	"context"
 	"freeforum/interface/controller"
-	"net/http"
 )
 
+type Request1 struct {
+	Post  []byte
+	Query string
+}
+
 type UserServiceType interface {
-	BaseUserInfo(ctx *context.Context, r *http.Request) controller.Reply
+	BaseUserInfo(ctx *context.Context, req *Request1) controller.Reply
 }

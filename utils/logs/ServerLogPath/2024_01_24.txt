@@ -1,3 +1,32 @@
 [info]2024/01/24 13:28:07 C:/Users/chenhang/Desktop/code/05.go/freeforum/controller/httpd/server.go:18: start http server
 [info]2024/01/24 13:28:07 C:/Users/chenhang/Desktop/code/05.go/freeforum/controller/httpd/server.go:19: address:  0.0.0.0:8888
 [info]2024/01/24 13:28:11 C:/Users/chenhang/Desktop/code/05.go/freeforum/controller/httpd/server.go:47: api url: api/users/baseInfo
+[info]2024/01/24 14:00:34 C:/Users/chenhang/Desktop/code/05.go/freeforum/controller/httpd/server.go:18: start http server
+[info]2024/01/24 14:00:34 C:/Users/chenhang/Desktop/code/05.go/freeforum/controller/httpd/server.go:19: address:  0.0.0.0:8888
+[info]2024/01/24 14:00:37 C:/Users/chenhang/Desktop/code/05.go/freeforum/controller/httpd/server.go:47: api url: api/users/baseInfo
+[info]2024/01/24 14:34:10 C:/Users/chenhang/Desktop/code/05.go/freeforum/controller/httpd/server.go:20: start http server
+[info]2024/01/24 14:34:10 C:/Users/chenhang/Desktop/code/05.go/freeforum/controller/httpd/server.go:21: address:  0.0.0.0:8888
+[info]2024/01/24 14:35:07 C:/Users/chenhang/Desktop/code/05.go/freeforum/controller/httpd/server.go:49: api url: api/users/baseInfo
+[error]2024/01/24 14:35:07 C:/Users/chenhang/Desktop/code/05.go/freeforum/utils/handle/handle_req.go:33: invalid character '-' in numeric literal
+[info]2024/01/24 14:35:37 C:/Users/chenhang/Desktop/code/05.go/freeforum/controller/httpd/server.go:20: start http server
+[info]2024/01/24 14:35:37 C:/Users/chenhang/Desktop/code/05.go/freeforum/controller/httpd/server.go:21: address:  0.0.0.0:8888
+[info]2024/01/24 14:35:41 C:/Users/chenhang/Desktop/code/05.go/freeforum/controller/httpd/server.go:49: api url: api/users/baseInfo
+[error]2024/01/24 14:35:41 C:/Users/chenhang/Desktop/code/05.go/freeforum/utils/handle/handle_req.go:33: invalid character '-' in numeric literal
+[info]2024/01/24 14:35:49 C:/Users/chenhang/Desktop/code/05.go/freeforum/controller/httpd/server.go:49: api url: api/users/baseInfo
+[error]2024/01/24 14:35:49 C:/Users/chenhang/Desktop/code/05.go/freeforum/utils/handle/handle_req.go:33: invalid character '-' in numeric literal
+[info]2024/01/24 14:37:44 C:/Users/chenhang/Desktop/code/05.go/freeforum/controller/httpd/server.go:49: api url: api/users/baseInfo
+[error]2024/01/24 14:37:44 C:/Users/chenhang/Desktop/code/05.go/freeforum/utils/handle/handle_req.go:33: invalid character '}' looking for beginning of object key string
+[info]2024/01/24 14:37:47 C:/Users/chenhang/Desktop/code/05.go/freeforum/controller/httpd/server.go:49: api url: api/users/baseInfo
+[error]2024/01/24 14:37:47 C:/Users/chenhang/Desktop/code/05.go/freeforum/utils/handle/handle_req.go:33: invalid character '}' looking for beginning of object key string
+[info]2024/01/24 14:38:12 C:/Users/chenhang/Desktop/code/05.go/freeforum/controller/httpd/server.go:49: api url: api/users/baseInfo
+[error]2024/01/24 14:38:12 C:/Users/chenhang/Desktop/code/05.go/freeforum/utils/handle/handle_req.go:33: invalid character '}' looking for beginning of object key string
+[info]2024/01/24 14:38:46 C:/Users/chenhang/Desktop/code/05.go/freeforum/controller/httpd/server.go:20: start http server
+[info]2024/01/24 14:38:46 C:/Users/chenhang/Desktop/code/05.go/freeforum/controller/httpd/server.go:21: address:  0.0.0.0:8888
+[info]2024/01/24 14:38:51 C:/Users/chenhang/Desktop/code/05.go/freeforum/controller/httpd/server.go:49: api url: api/users/baseInfo
+[error]2024/01/24 14:38:51 C:/Users/chenhang/Desktop/code/05.go/freeforum/utils/handle/handle_req.go:33: invalid character '}' looking for beginning of object key string
+[info]2024/01/24 14:40:49 C:/Users/chenhang/Desktop/code/05.go/freeforum/controller/httpd/server.go:49: api url: api/users/baseInfo
+[info]2024/01/24 14:44:09 start http server
+[info]2024/01/24 14:44:09 address:  0.0.0.0:8888
+[info]2024/01/24 14:44:12 api url: api/users/baseInfo
+[info]2024/01/24 14:45:02 server.go:20: start http server
+[info]2024/01/24 14:45:02 server.go:21: address:  0.0.0.0:8888
