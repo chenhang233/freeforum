@@ -17,7 +17,7 @@ func RandomWordsIndex(words string) int {
 
 func RandomUUID(addr string) string {
 	sb := strings.Builder{}
-	for i := 0; i < 10; i++ {
+	for i := 0; i < 5; i++ {
 		time.Sleep(50)
 		addrList := strings.Split(addr, ":")
 		if len(addrList) < 2 {
@@ -33,7 +33,7 @@ func RandomUUID(addr string) string {
 		}
 
 	}
-	for i := 0; i < 20; i++ {
+	for i := 0; i < 5; i++ {
 		time.Sleep(50)
 		sb.WriteByte(words[RandomWordsIndex(words)])
 	}
