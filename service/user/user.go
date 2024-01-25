@@ -20,6 +20,22 @@ type ParamBaseUserInfo struct {
 type UsersService struct {
 }
 
+func (u *UsersService) reply(err error, data any, msg string, errmsg string) controller.Reply {
+	res := service.JsonResponse{
+		Code:    service.NormalCode,
+		Message: msg,
+		Data:    data,
+	}
+	if err != nil {
+		res.Code = service.ErrorCode
+		res.Message = errmsg
+		res.Data = nil
+		logs.LOG.Error.Println(err)
+		return &service.Reply1{Results: handle.Marshal(res)}
+	}
+	return &service.Reply1{Results: handle.Marshal(res)}
+}
+
 func (u *UsersService) BaseUserInfo(ctx *context.Context, req *service2.Request1) controller.Reply {
 	var err error
 	d := pool.GetTable(model.TableUsers)
@@ -27,37 +43,20 @@ func (u *UsersService) BaseUserInfo(ctx *context.Context, req *service2.Request1
 	mu := model.Users{}
 	handle.Unmarshal(req.Post, param)
 	tp := param.Tp
-	cid := param.Data.Cid
-	err = d.Debug().Where("cid = ?", cid).First(&mu).Error
-	if err != nil {
-		logs.LOG.Error.Println(err)
-		return &service.Reply2{}
-	}
+	id := param.Data.Id
+	err = d.Debug().Where("id = ?", id).First(&mu).Error
 
-	res := service.JsonResponse{
-		Code: service.NormalCode,
-		Data: mu,
-	}
-	successReply := &service.Reply1{Results: handle.Marshal(res)}
 	if tp == 0 {
-		return successReply
+		return u.reply(err, mu, "", "查无此人")
 	}
 	if tp == 1 {
 		if mu.Id == 0 {
-			utils.RandomUUID(param.Data.Cid)
+			param.Data.Cid = utils.RandomUUID("")
 			err = d.Debug().Create(&param.Data).Error
-			if err != nil {
-				logs.LOG.Error.Println(err)
-				return &service.Reply2{}
-			}
-			return successReply
+			return u.reply(err, nil, "", "插入失败")
 		}
 		err = d.Debug().Save(&param.Data).Error
-		if err != nil {
-			logs.LOG.Error.Println(err)
-			return &service.Reply2{}
-		}
-		return successReply
+		return u.reply(err, nil, "", "修改失败")
 	}
 	return &service.Reply3{}
 }
