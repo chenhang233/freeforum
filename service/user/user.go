@@ -6,6 +6,7 @@ import (
 	service2 "freeforum/interface/service"
 	"freeforum/service"
 	"freeforum/service/model"
+	"freeforum/utils"
 	"freeforum/utils/handle"
 	"freeforum/utils/logs"
 	"freeforum/utils/pool"
@@ -43,6 +44,7 @@ func (u *UsersService) BaseUserInfo(ctx *context.Context, req *service2.Request1
 	}
 	if tp == 1 {
 		if mu.Id == 0 {
+			utils.RandomUUID(param.Data.Cid)
 			err = d.Debug().Create(&param.Data).Error
 			if err != nil {
 				logs.LOG.Error.Println(err)

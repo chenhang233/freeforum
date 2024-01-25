@@ -19,6 +19,7 @@ func (h *HandlerD) Start() error {
 	http.HandleFunc(Q_BASE, h.handle)
 	logs.LOG.Info.Println("start http server")
 	logs.LOG.Info.Println("address: ", config.Properties.BindAddr)
+	logs.LOG.Info.Println("RuntimeID: ", config.Properties.RuntimeID)
 	err := http.ListenAndServe(config.Properties.BindAddr, nil)
 	if err != nil {
 		logs.LOG.Error.Println("Error starting server:", err.Error())
