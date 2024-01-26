@@ -5,6 +5,34 @@
     <title>Title</title>
 </head>
 <body>
-111
+<h1>index</h1>
+<span id="recv">123</span>
+<script>
+    const websocket = new WebSocket("ws://127.0.0.1:8888/ws");
+    websocket.onopen = function () {
+        console.log('websocket open');
+        document.getElementById("recv").innerText = "websocket连接成功";
+    }
+    websocket.onerror = function (ev) {
+        console.log(ev)
+        document.getElementById("recv").innerText = "websocket连接错误";
+    }
+
+    websocket.onclose = function () {
+        console.log('websocket close');
+        document.getElementById("recv").innerText = "websocket连接关闭"
+    }
+    websocket.onmessage = function (ev) {
+        let b_cmd = document.getElementById("cmd")
+        b_cmd.innerHTML += "\n"
+        b_cmd.innerHTML += ev.data
+        console.log(ev.data,"ev.data.")
+        if (ev.data.includes("[成功]")) {
+            let b_cmd2 = document.getElementById("cmd2")
+            b_cmd2.innerHTML += "\n"
+            b_cmd2.innerHTML += ev.data
+        }
+    }
+</script>
 </body>
 </html>

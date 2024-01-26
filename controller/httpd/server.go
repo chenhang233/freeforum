@@ -6,18 +6,35 @@ import (
 	"freeforum/config"
 	"freeforum/controller/interceptor"
 	"freeforum/interface/service"
+	"freeforum/service/ws1"
 	"freeforum/utils/handle"
 	"freeforum/utils/logs"
 	"net/http"
+	"os"
+)
+
+var (
+	HubInstance *ws1.Hub
+	WsInstance  *ws1.WsServer
 )
 
 type HandlerD struct {
 	close bool
 }
 
+func (h *HandlerD) Load(hub *ws1.Hub, w *ws1.WsServer) {
+	logs.LOG.Info.Println("Load ...")
+	HubInstance = hub
+	WsInstance = w
+	HubInstance.Run()
+	logs.LOG.Info.Println("HubInstance Run Success")
+}
+
 func (h *HandlerD) Start() error {
-	http.HandleFunc(Q_BASE, h.handle)
 	logs.LOG.Info.Println("start http server")
+	http.HandleFunc(Q_BASE, h.handle)
+	http.HandleFunc(Q_WS, h.handle0)
+
 	logs.LOG.Info.Println("address: ", config.Properties.BindAddr)
 	logs.LOG.Info.Println("RuntimeID: ", config.Properties.RuntimeID)
 	err := http.ListenAndServe(config.Properties.BindAddr, nil)
@@ -28,6 +45,11 @@ func (h *HandlerD) Start() error {
 	return nil
 }
 
+func (h *HandlerD) handle0(w http.ResponseWriter, r *http.Request) {
+	fmt.Println("handle0")
+	WsInstance.ServeWs(HubInstance, w, r)
+}
+
 func (h *HandlerD) handle(w http.ResponseWriter, r *http.Request) {
 	// prev
 	ctx := context.Background()
@@ -36,6 +58,7 @@ func (h *HandlerD) handle(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 	rt := ctx.Value("ReqList").([]string)
+	fmt.Println(rt)
 	if rt[0] == Q_API {
 		h.handle2(&ctx, w, r)
 		return
@@ -73,8 +96,21 @@ func (h *HandlerD) handle2(ctx *context.Context, w http.ResponseWriter, r *http.
 }
 
 func (h *HandlerD) Handle(ctx context.Context, w http.ResponseWriter, r *http.Request) {
-	fmt.Fprintf(w, "Hello!")
-	logs.LOG.Info.Println("Hello!")
+	//fmt.Fprintf(w, "Hello!")
+	h.index(w, r)
+}
+
+func (h *HandlerD) index(w http.ResponseWriter, r *http.Request) {
+	var err error
+	file, err := os.ReadFile(Q_INDEX)
+	if err != nil {
+		logs.LOG.Error.Println(err)
+		return
+	}
+	_, err = w.Write(file)
+	if err != nil {
+		logs.LOG.Error.Println(err)
+	}
 }
 
 func (h *HandlerD) Close() error {

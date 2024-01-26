@@ -9,8 +9,10 @@ import (
 )
 
 const (
-	Q_BASE = "/"
-	Q_API  = "api"
+	Q_BASE  = "/"
+	Q_WS    = "/ws"
+	Q_API   = "api"
+	Q_INDEX = "www/index.html"
 )
 
 type ServiceFn func(ctx *context.Context, req *service.Request1) controller.Reply

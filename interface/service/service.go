@@ -1,15 +1,15 @@
 package service
 
 import (
-	"context"
-	"freeforum/interface/controller"
+	"freeforum/service/ws1"
+	"net/http"
 )
 
-type Request1 struct {
-	Post  []byte
-	Query string
+type WsServiceType interface {
+	ServeWs(hub *ws1.Hub, w http.ResponseWriter, r *http.Request)
 }
 
-type UserServiceType interface {
-	BaseUserInfo(ctx *context.Context, req *Request1) controller.Reply
+type WsClientType interface {
+	readPump()
+	writePump()
 }

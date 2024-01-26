@@ -31,6 +31,7 @@ func (in *HttpInterceptor) RequestPrevious(ctx *context.Context, w http.Response
 	in.loadStruct(r)
 	rl := in.ReqList
 	if len(rl) == 0 {
+		logs.LOG.Warn.Println("url len false")
 		return false
 	}
 	if strings.TrimPrefix(rl[0], " ") == FAVICON {
