@@ -4,7 +4,7 @@ import (
 	"context"
 	"freeforum/interface/controller"
 	"freeforum/interface/service"
-	"freeforum/service/user"
+	"freeforum/service/users"
 	"freeforum/utils/logs"
 )
 
@@ -45,6 +45,6 @@ func RegisterUrl(url string, fn ServiceFn, close bool) {
 var UsersServiceInstance service.UserServiceType
 
 func init() {
-	UsersServiceInstance = &user.UsersService{}
+	UsersServiceInstance = &users.UsersService{}
 	RegisterUrl("/users/baseInfo", UsersServiceInstance.BaseUserInfo, false)
 }

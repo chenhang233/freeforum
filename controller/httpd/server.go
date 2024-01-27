@@ -46,7 +46,6 @@ func (h *HandlerD) Start() error {
 }
 
 func (h *HandlerD) handle0(w http.ResponseWriter, r *http.Request) {
-	fmt.Println("handle0")
 	WsInstance.ServeWs(HubInstance, w, r)
 }
 
