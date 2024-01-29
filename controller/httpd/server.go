@@ -7,9 +7,11 @@ import (
 	"freeforum/controller/hubIns"
 	"freeforum/controller/interceptor"
 	"freeforum/interface/service"
+	"freeforum/service/model"
 	"freeforum/service/ws1"
 	"freeforum/utils/handle"
 	"freeforum/utils/logs"
+	"freeforum/utils/pool"
 	"net/http"
 	"os"
 )
@@ -23,17 +25,27 @@ type HandlerD struct {
 }
 
 func (h *HandlerD) Load(hub *ws1.Hub, w *ws1.WsServer) {
+	var RoomList []*model.Rooms
 	logs.LOG.Info.Println("Load ...")
 	hubIns.HubGlobalInstance = hub
 	WsInstance = w
 	hubIns.HubGlobalInstance.Run()
 	logs.LOG.Info.Println("HubGlobalInstance Run Success")
+
+	hubIns.CharsHubList = map[int]*ws1.Hub{}
+	d := pool.GetTable(model.TableRooms)
+	err := d.Find(&RoomList).Error
+	if err != nil {
+		panic(err)
+	}
+	for _, room := range RoomList {
+		hubIns.CharsHubList[room.Id] = ws1.NewHub()
+	}
 }
 
 func (h *HandlerD) Start() error {
 	logs.LOG.Info.Println("start http server")
 	http.HandleFunc(Q_BASE, h.handle)
-	http.HandleFunc(Q_WS, h.handle0)
 
 	logs.LOG.Info.Println("address: ", config.Properties.BindAddr)
 	logs.LOG.Info.Println("RuntimeID: ", config.Properties.RuntimeID)
@@ -45,11 +57,6 @@ func (h *HandlerD) Start() error {
 	return nil
 }
 
-func (h *HandlerD) handle0(w http.ResponseWriter, r *http.Request) {
-	// ... 分发
-	WsInstance.ServeWs(hubIns.HubGlobalInstance, w, r)
-}
-
 func (h *HandlerD) handle(w http.ResponseWriter, r *http.Request) {
 	// prev
 	ctx := context.Background()
@@ -58,6 +65,10 @@ func (h *HandlerD) handle(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 	rt := ctx.Value("ReqList").([]string)
+	if rt[0] == Q_WS {
+		h.handle1(&ctx, w, r)
+		return
+	}
 	if rt[0] == Q_API {
 		h.handle2(&ctx, w, r)
 		return
@@ -67,13 +78,23 @@ func (h *HandlerD) handle(w http.ResponseWriter, r *http.Request) {
 	hp.RequestAfters(&ctx, w, r)
 }
 
+func (h *HandlerD) handle1(ctx *context.Context, w http.ResponseWriter, r *http.Request) {
+	if len(r.RequestURI) < 4 {
+		return
+	}
+	roomId := r.RequestURI[4:]
+	fmt.Println(url, r.RequestURI)
+	//hubIns.CharsHubList
+	WsInstance.ServeWs(hubIns.HubGlobalInstance, w, r)
+}
+
 func (h *HandlerD) handle2(ctx *context.Context, w http.ResponseWriter, r *http.Request) {
 	url := r.RequestURI[1:]
 	logs.LOG.Info.Println(fmt.Sprintf("api url: %s", url))
 	if !CheckUrlExist(url) {
 		return
 	}
-	p := RouterTable[url]
+	p := ApiRouterTable[url]
 	if p.close {
 		_, err := fmt.Fprintf(w, "close api")
 		if err != nil {
@@ -96,6 +117,7 @@ func (h *HandlerD) handle2(ctx *context.Context, w http.ResponseWriter, r *http.
 
 func (h *HandlerD) Handle(ctx context.Context, w http.ResponseWriter, r *http.Request) {
 	//fmt.Fprintf(w, "Hello!")
+	logs.LOG.Debug.Println("Handle index")
 	h.index(w, r)
 }
 

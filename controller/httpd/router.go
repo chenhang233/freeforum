@@ -11,7 +11,7 @@ import (
 
 const (
 	Q_BASE  = "/"
-	Q_WS    = "/ws"
+	Q_WS    = "ws"
 	Q_API   = "api"
 	Q_INDEX = "www/index.html"
 )
@@ -23,14 +23,14 @@ type params struct {
 	close     bool
 }
 
-var RouterTable = make(map[string]*params)
+var ApiRouterTable = make(map[string]*params)
 
 func CheckUrlExist(url string) bool {
-	_, ok := RouterTable[url]
+	_, ok := ApiRouterTable[url]
 	return ok
 }
 
-func RegisterUrl(url string, fn ServiceFn, close bool) {
+func RegisterApiUrl(url string, fn ServiceFn, close bool) {
 	if CheckUrlExist(url) {
 		logs.LOG.Error.Println(url)
 		panic("url exist")
@@ -40,7 +40,7 @@ func RegisterUrl(url string, fn ServiceFn, close bool) {
 		close:     close,
 	}
 	url = Q_API + url
-	RouterTable[url] = p
+	ApiRouterTable[url] = p
 }
 
 var UsersServiceInstance service.UserServiceType
@@ -49,8 +49,8 @@ var CharsServiceInstance service.CharsServiceType
 func init() {
 	UsersServiceInstance = &users.UsersService{}
 	CharsServiceInstance = &chars.CharService{}
-	RegisterUrl("/users/baseInfo", UsersServiceInstance.BaseUserInfo, false)
-	RegisterUrl("/rooms/sendBroadcastMsg", CharsServiceInstance.SendBroadcastMsg, false)
-	RegisterUrl("/rooms/CharsList", CharsServiceInstance.CharsList, false)
-	RegisterUrl("/rooms/baseInfo", CharsServiceInstance.BaseCharInfo, false)
+	RegisterApiUrl("/users/baseInfo", UsersServiceInstance.BaseUserInfo, false)
+	RegisterApiUrl("/rooms/sendBroadcastMsg", CharsServiceInstance.SendBroadcastMsg, false)
+	RegisterApiUrl("/rooms/CharsList", CharsServiceInstance.CharsList, false)
+	RegisterApiUrl("/rooms/baseInfo", CharsServiceInstance.BaseCharInfo, false)
 }
