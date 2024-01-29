@@ -44,7 +44,11 @@ type Reply4 struct {
 }
 
 func (r *Reply4) ToBytes() []byte {
-	return []byte(r.Value)
+	res := JsonResponse{
+		Code:    ErrorCode,
+		Message: r.Value,
+	}
+	return handle.Marshal(res)
 }
 
 func UsualReply(err error, data any, msg string, errmsg string) controller.Reply {

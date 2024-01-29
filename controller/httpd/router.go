@@ -50,5 +50,7 @@ func init() {
 	UsersServiceInstance = &users.UsersService{}
 	CharsServiceInstance = &chars.CharService{}
 	RegisterUrl("/users/baseInfo", UsersServiceInstance.BaseUserInfo, false)
+	RegisterUrl("/rooms/sendBroadcastMsg", CharsServiceInstance.SendBroadcastMsg, false)
+	RegisterUrl("/rooms/CharsList", CharsServiceInstance.CharsList, false)
 	RegisterUrl("/rooms/baseInfo", CharsServiceInstance.BaseCharInfo, false)
 }
