@@ -4,11 +4,10 @@ import (
 	"context"
 	"freeforum/interface/controller"
 	service2 "freeforum/interface/service"
-	"freeforum/service"
 	"freeforum/service/model"
+	"freeforum/service/reply"
 	"freeforum/utils"
 	"freeforum/utils/handle"
-	"freeforum/utils/logs"
 	"freeforum/utils/pool"
 	"time"
 )
@@ -19,22 +18,6 @@ type ParamBaseUserInfo struct {
 }
 
 type UsersService struct {
-}
-
-func (u *UsersService) reply(err error, data any, msg string, errmsg string) controller.Reply {
-	res := service.JsonResponse{
-		Code:    service.NormalCode,
-		Message: msg,
-		Data:    data,
-	}
-	if err != nil {
-		res.Code = service.ErrorCode
-		res.Message = errmsg
-		res.Data = nil
-		logs.LOG.Error.Println(err)
-		return &service.Reply1{Results: handle.Marshal(res)}
-	}
-	return &service.Reply1{Results: handle.Marshal(res)}
 }
 
 func (u *UsersService) BaseUserInfo(ctx *context.Context, req *service2.Request1) controller.Reply {
@@ -48,7 +31,7 @@ func (u *UsersService) BaseUserInfo(ctx *context.Context, req *service2.Request1
 
 	if tp == 0 {
 		err = d.Debug().Where("id = ?", id).First(&mu).Error
-		return u.reply(err, mu, "", "查无此人")
+		return reply.UsualReply(err, mu, "", "查无此人")
 	}
 	if tp == 1 {
 		if id == 0 {
@@ -56,10 +39,10 @@ func (u *UsersService) BaseUserInfo(ctx *context.Context, req *service2.Request1
 			param.Data.CreateTime = time.Now()
 			param.Data.UpdateTime = time.Now()
 			err = d.Debug().Create(&param.Data).Error
-			return u.reply(err, nil, "", "插入失败")
+			return reply.UsualReply(err, nil, "", "插入失败")
 		}
 		err = d.Debug().Updates(&param.Data).Error
-		return u.reply(err, nil, "", "修改失败")
+		return reply.UsualReply(err, nil, "", "修改失败")
 	}
-	return &service.Reply3{}
+	return &reply.Reply3{}
 }

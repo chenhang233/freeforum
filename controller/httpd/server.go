@@ -14,8 +14,8 @@ import (
 )
 
 var (
-	HubInstance *ws1.Hub
-	WsInstance  *ws1.WsServer
+	HubGlobalInstance *ws1.Hub
+	WsInstance        *ws1.WsServer
 )
 
 type HandlerD struct {
@@ -24,10 +24,10 @@ type HandlerD struct {
 
 func (h *HandlerD) Load(hub *ws1.Hub, w *ws1.WsServer) {
 	logs.LOG.Info.Println("Load ...")
-	HubInstance = hub
+	HubGlobalInstance = hub
 	WsInstance = w
-	HubInstance.Run()
-	logs.LOG.Info.Println("HubInstance Run Success")
+	HubGlobalInstance.Run()
+	logs.LOG.Info.Println("HubGlobalInstance Run Success")
 }
 
 func (h *HandlerD) Start() error {
@@ -46,7 +46,7 @@ func (h *HandlerD) Start() error {
 }
 
 func (h *HandlerD) handle0(w http.ResponseWriter, r *http.Request) {
-	WsInstance.ServeWs(HubInstance, w, r)
+	WsInstance.ServeWs(HubGlobalInstance, w, r)
 }
 
 func (h *HandlerD) handle(w http.ResponseWriter, r *http.Request) {

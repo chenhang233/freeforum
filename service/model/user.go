@@ -17,5 +17,5 @@ type Users struct {
 	Introduction string    `json:"introduction"`
 	CreateTime   time.Time `json:"createTime"`
 	UpdateTime   time.Time `json:"updateTime"`
-	Status       int
+	Status       int       `json:"status"`
 }

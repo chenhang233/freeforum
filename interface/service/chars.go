@@ -7,4 +7,5 @@ import (
 
 type CharsServiceType interface {
 	SendBroadcastMsg(ctx *context.Context, req *Request1) controller.Reply
+	BaseCharInfo(ctx *context.Context, req *Request1) controller.Reply
 }
