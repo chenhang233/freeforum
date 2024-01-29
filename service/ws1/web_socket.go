@@ -63,6 +63,7 @@ func (h *Hub) Run() {
 				if _, ok := h.Clients[client]; ok {
 					delete(h.Clients, client)
 					close(client.Send)
+					logs.LOG.Debug.Println("client unregister")
 				}
 			case message := <-h.broadcast:
 				for client := range h.Clients {

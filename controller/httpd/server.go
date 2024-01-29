@@ -4,6 +4,7 @@ import (
 	"context"
 	"fmt"
 	"freeforum/config"
+	"freeforum/controller/hubIns"
 	"freeforum/controller/interceptor"
 	"freeforum/interface/service"
 	"freeforum/service/ws1"
@@ -14,8 +15,7 @@ import (
 )
 
 var (
-	HubGlobalInstance *ws1.Hub
-	WsInstance        *ws1.WsServer
+	WsInstance *ws1.WsServer
 )
 
 type HandlerD struct {
@@ -24,9 +24,9 @@ type HandlerD struct {
 
 func (h *HandlerD) Load(hub *ws1.Hub, w *ws1.WsServer) {
 	logs.LOG.Info.Println("Load ...")
-	HubGlobalInstance = hub
+	hubIns.HubGlobalInstance = hub
 	WsInstance = w
-	HubGlobalInstance.Run()
+	hubIns.HubGlobalInstance.Run()
 	logs.LOG.Info.Println("HubGlobalInstance Run Success")
 }
 
@@ -46,7 +46,8 @@ func (h *HandlerD) Start() error {
 }
 
 func (h *HandlerD) handle0(w http.ResponseWriter, r *http.Request) {
-	WsInstance.ServeWs(HubGlobalInstance, w, r)
+	// ... 分发
+	WsInstance.ServeWs(hubIns.HubGlobalInstance, w, r)
 }
 
 func (h *HandlerD) handle(w http.ResponseWriter, r *http.Request) {
@@ -57,7 +58,6 @@ func (h *HandlerD) handle(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 	rt := ctx.Value("ReqList").([]string)
-	fmt.Println(rt)
 	if rt[0] == Q_API {
 		h.handle2(&ctx, w, r)
 		return

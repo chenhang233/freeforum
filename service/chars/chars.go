@@ -3,6 +3,7 @@ package chars
 import (
 	"context"
 	"fmt"
+	"freeforum/controller/hubIns"
 	"freeforum/interface/controller"
 	"freeforum/interface/service"
 	"freeforum/service/model"
@@ -35,7 +36,7 @@ func (s *CharService) SendBroadcastMsg(ctx *context.Context, req *service.Reques
 	param := &ParamCharBase{}
 	handle.Unmarshal(req.Post, param)
 
-	//httpd.HubGlobalInstance.SendBroadcastData(handle.Marshal(param))
+	hubIns.HubGlobalInstance.SendBroadcastData(handle.Marshal(param))
 	res := reply.JsonResponse{
 		Code: reply.NormalCode,
 	}
