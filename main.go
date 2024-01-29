@@ -3,11 +3,12 @@ package main
 import (
 	"freeforum/config"
 	"freeforum/controller/httpd"
+	"freeforum/service/model"
 	"freeforum/service/ws1"
 )
 
 func Setup(h *httpd.HandlerD, w *ws1.WsServer) error {
-	hub := ws1.NewHub()
+	hub := ws1.NewHub(&model.Rooms{})
 	h.Load(hub, w)
 	err := h.Start()
 	if err != nil {

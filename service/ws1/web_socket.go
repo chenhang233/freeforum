@@ -2,6 +2,8 @@ package ws1
 
 import (
 	"bytes"
+	"fmt"
+	"freeforum/service/model"
 	"freeforum/utils/logs"
 	"github.com/gorilla/websocket"
 	"net/http"
@@ -27,7 +29,9 @@ var (
 
 type WsServer struct {
 }
+
 type Hub struct {
+	R          *model.Rooms
 	Clients    map[*Client]bool
 	broadcast  chan []byte
 	register   chan *Client
@@ -40,8 +44,9 @@ type Client struct {
 	Send chan []byte
 }
 
-func NewHub() *Hub {
+func NewHub(R *model.Rooms) *Hub {
 	return &Hub{
+		R:          R,
 		broadcast:  make(chan []byte),
 		register:   make(chan *Client),
 		unregister: make(chan *Client),
@@ -54,7 +59,9 @@ func (h *Hub) SendBroadcastData(data []byte) {
 }
 
 func (h *Hub) Run() {
+	status := make(chan bool)
 	go func() {
+		status <- true
 		for {
 			select {
 			case client := <-h.register:
@@ -77,6 +84,12 @@ func (h *Hub) Run() {
 			}
 		}
 	}()
+	res := <-status
+	if !res {
+		logs.LOG.Error.Println("status panic")
+		return
+	}
+	logs.LOG.Info.Println(fmt.Sprintf("Hub Run success, id: %d, name: %s", h.R.Id, h.R.Name))
 }
 
 func (ws *WsServer) ServeWs(hub *Hub, w http.ResponseWriter, r *http.Request) {

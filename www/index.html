@@ -9,7 +9,7 @@
 <span id="recv">123</span>
 <div id="cmd"></div>
 <script>
-    const websocket = new WebSocket("ws://192.168.1.5:8888/ws/12");
+    const websocket = new WebSocket("ws://192.168.1.5:8888/ws/1");
     websocket.onopen = function () {
         console.log('websocket open');
         document.getElementById("recv").innerText = "websocket连接成功";

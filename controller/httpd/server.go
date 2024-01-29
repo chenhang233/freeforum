@@ -2,18 +2,21 @@ package httpd
 
 import (
 	"context"
+	"errors"
 	"fmt"
 	"freeforum/config"
 	"freeforum/controller/hubIns"
 	"freeforum/controller/interceptor"
 	"freeforum/interface/service"
 	"freeforum/service/model"
+	"freeforum/service/reply"
 	"freeforum/service/ws1"
 	"freeforum/utils/handle"
 	"freeforum/utils/logs"
 	"freeforum/utils/pool"
 	"net/http"
 	"os"
+	"strconv"
 )
 
 var (
@@ -31,15 +34,15 @@ func (h *HandlerD) Load(hub *ws1.Hub, w *ws1.WsServer) {
 	WsInstance = w
 	hubIns.HubGlobalInstance.Run()
 	logs.LOG.Info.Println("HubGlobalInstance Run Success")
-
 	hubIns.CharsHubList = map[int]*ws1.Hub{}
 	d := pool.GetTable(model.TableRooms)
-	err := d.Find(&RoomList).Error
+	err := d.Debug().Where("status = ? ", 0).Find(&RoomList).Error
 	if err != nil {
 		panic(err)
 	}
 	for _, room := range RoomList {
-		hubIns.CharsHubList[room.Id] = ws1.NewHub()
+		hubIns.CharsHubList[room.Id] = ws1.NewHub(room)
+		hubIns.CharsHubList[room.Id].Run()
 	}
 }
 
@@ -79,13 +82,27 @@ func (h *HandlerD) handle(w http.ResponseWriter, r *http.Request) {
 }
 
 func (h *HandlerD) handle1(ctx *context.Context, w http.ResponseWriter, r *http.Request) {
+	var err error
 	if len(r.RequestURI) < 4 {
+		err = errors.New("RequestURI len < 4")
+		logs.LOG.Error.Println(err)
+		reply.UsualReply(err, nil, "", err.Error())
 		return
 	}
-	roomId := r.RequestURI[4:]
-	fmt.Println(url, r.RequestURI)
+	roomId, err := strconv.Atoi(r.RequestURI[4:])
+	if err != nil {
+		logs.LOG.Error.Println(err)
+		reply.UsualReply(err, nil, "", err.Error())
+		return
+	}
+	logs.LOG.Info.Println(fmt.Sprintf("current roomid: %d", roomId))
 	//hubIns.CharsHubList
-	WsInstance.ServeWs(hubIns.HubGlobalInstance, w, r)
+	curHub, ok := hubIns.CharsHubList[roomId]
+	if !ok {
+		logs.LOG.Error.Println(err)
+		reply.UsualReply(err, nil, "", "房间不存在")
+	}
+	WsInstance.ServeWs(curHub, w, r)
 }
 
 func (h *HandlerD) handle2(ctx *context.Context, w http.ResponseWriter, r *http.Request) {
@@ -117,7 +134,7 @@ func (h *HandlerD) handle2(ctx *context.Context, w http.ResponseWriter, r *http.
 
 func (h *HandlerD) Handle(ctx context.Context, w http.ResponseWriter, r *http.Request) {
 	//fmt.Fprintf(w, "Hello!")
-	logs.LOG.Debug.Println("Handle index")
+	//logs.LOG.Debug.Println("Handle index")
 	h.index(w, r)
 }
 
