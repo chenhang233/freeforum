@@ -13,7 +13,7 @@ const (
 	Q_BASE  = "/"
 	Q_WS    = "ws"
 	Q_API   = "api"
-	Q_INDEX = "www/index.html"
+	Q_INDEX = "www"
 )
 
 type ServiceFn func(ctx *context.Context, req *service.Request1) controller.Reply

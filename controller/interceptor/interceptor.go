@@ -2,7 +2,6 @@ package interceptor
 
 import (
 	"context"
-	"fmt"
 	"freeforum/utils/logs"
 	"net/http"
 	"os"
@@ -19,6 +18,9 @@ type HttpInterceptor struct {
 }
 
 func (in *HttpInterceptor) loadStruct(r *http.Request) {
+	//if r.RequestURI[0] != '/' {
+	//	r := strings.Join(strings.Split(r.RequestURI, "/")[1:], "")
+	//}
 	tp1 := strings.Split(r.RequestURI, "/")
 	for _, s := range tp1 {
 		if strings.Trim(s, " ") != "" {
@@ -47,7 +49,6 @@ func (in *HttpInterceptor) RequestPrevious(ctx *context.Context, w http.Response
 			}
 		}(f)
 		http.ServeFile(w, r, FAP)
-		fmt.Println(r.RequestURI)
 		return false
 	}
 	*ctx = context.WithValue(*ctx, "ReqList", rl)

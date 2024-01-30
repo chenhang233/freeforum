@@ -68,15 +68,14 @@ func (h *HandlerD) handle(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 	rt := ctx.Value("ReqList").([]string)
+	//fmt.Println(rt)
 	if rt[0] == Q_WS {
 		h.handle1(&ctx, w, r)
-		return
-	}
-	if rt[0] == Q_API {
+	} else if rt[0] == Q_API {
 		h.handle2(&ctx, w, r)
-		return
+	} else {
+		h.Handle(&ctx, w, r)
 	}
-	h.Handle(ctx, w, r)
 	// after
 	hp.RequestAfters(&ctx, w, r)
 }
@@ -101,7 +100,15 @@ func (h *HandlerD) handle1(ctx *context.Context, w http.ResponseWriter, r *http.
 	if !ok {
 		logs.LOG.Error.Println(err)
 		reply.UsualReply(err, nil, "", "房间不存在")
+		return
 	}
+	if len(curHub.Clients) >= curHub.R.MaxNum {
+		err = errors.New("房间达到人数上限")
+		logs.LOG.Warn.Println(err)
+		reply.UsualReply(err, nil, "", err.Error())
+		return
+	}
+
 	WsInstance.ServeWs(curHub, w, r)
 }
 
@@ -132,15 +139,17 @@ func (h *HandlerD) handle2(ctx *context.Context, w http.ResponseWriter, r *http.
 	}
 }
 
-func (h *HandlerD) Handle(ctx context.Context, w http.ResponseWriter, r *http.Request) {
+func (h *HandlerD) Handle(ctx *context.Context, w http.ResponseWriter, r *http.Request) {
 	//fmt.Fprintf(w, "Hello!")
 	//logs.LOG.Debug.Println("Handle index")
-	h.index(w, r)
+	rt := (*ctx).Value("ReqList").([]string)
+
+	h.static(rt, w, r)
 }
 
-func (h *HandlerD) index(w http.ResponseWriter, r *http.Request) {
+func (h *HandlerD) static(urls []string, w http.ResponseWriter, r *http.Request) {
 	var err error
-	file, err := os.ReadFile(Q_INDEX)
+	file, err := os.ReadFile(Q_INDEX + r.RequestURI)
 	if err != nil {
 		logs.LOG.Error.Println(err)
 		return

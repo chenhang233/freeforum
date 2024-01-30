@@ -2,6 +2,7 @@ package pool
 
 import (
 	"fmt"
+	"freeforum/utils/logs"
 	"gorm.io/driver/mysql"
 	"gorm.io/gorm"
 )
@@ -23,7 +24,7 @@ func init() {
 	if err != nil {
 		panic(" database error: " + err.Error())
 	}
-
+	logs.LOG.Info.Println("database connected !!!")
 	sqlDB, _ := _db.DB()
 
 	sqlDB.SetMaxOpenConns(100) //设置数据库连接池最大连接数
